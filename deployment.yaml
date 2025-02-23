@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-web-server
+spec:
+  replicas: 3 # Run 3 instances (pods)
+  selector:
+    matchLabels:
+      app: go-web
+  template:
+    metadata:
+      labels:
+        app: go-web
+    spec:
+      containers:
+        - name: go-web
+          image: vimkim/go-web-server:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080

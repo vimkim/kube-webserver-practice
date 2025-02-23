@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-web-service
+spec:
+  selector:
+    app: go-web
+  ports:
+    - protocol: TCP
+      port: 80 # Exposed service port
+      targetPort: 8080 # Go app port inside container
+  type: LoadBalancer # For cloud-based access
+
